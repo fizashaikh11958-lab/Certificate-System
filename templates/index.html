@@ -1,1 +1,7 @@
-
+{% extends "base.html" %}
+{% block content %}
+<h1>Digital Certificate System</h1>
+<p>Generate certificates as PDF and verify them using a unique Certificate ID.</p>
+<a class="btn" href="{{ url_for('generate') }}">Generate Certificate</a>
+<a class="btn" href="{{ url_for('verify') }}">Verify Certificate</a>
+{% endblock %}

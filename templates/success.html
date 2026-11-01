@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Certificate Generated</h2>
+<p>Certificate ID:</p>
+<p class="big">{{ cert.cert_id }}</p>
+<table>
+  <tr><td>Name</td><td>{{ cert.name }}</td></tr>
+  <tr><td>Course</td><td>{{ cert.course }}</td></tr>
+  <tr><td>Date</td><td>{{ cert.issue_date }}</td></tr>
+  <tr><td>Issued By</td><td>{{ cert.issuer }}</td></tr>
+</table>
+<a class="btn" href="{{ url_for('download', cert_id=cert.cert_id) }}">Download PDF</a>
+<a class="btn" href="{{ url_for('verify', id=cert.cert_id) }}">Verify</a>
+{% endblock %}

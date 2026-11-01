@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Verify Certificate</h2>
+<form method="GET">
+  <label>Certificate ID</label>
+  <input type="text" name="id" value="{{ cert_id }}" placeholder="CERT-XXXXXXXX" required>
+  <button type="submit">Verify</button>
+</form>
+
+{% if result == "valid" %}
+  <p class="valid">&#10004; Certificate is VALID</p>
+  <table>
+    <tr><td>Name</td><td>{{ cert.name }}</td></tr>
+    <tr><td>Course</td><td>{{ cert.course }}</td></tr>
+    <tr><td>Date</td><td>{{ cert.issue_date }}</td></tr>
+    <tr><td>Issued By</td><td>{{ cert.issuer }}</td></tr>
+  </table>
+{% elif result == "tampered" %}
+  <p class="invalid">&#10006; Record has been modified. Certificate is NOT valid.</p>
+{% elif result == "not_found" %}
+  <p class="invalid">&#10006; Certificate not found.</p>
+{% endif %}
+{% endblock %}
